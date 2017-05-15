@@ -2,7 +2,8 @@
   "name": "node-transmission-typescript",
   "version": "0.0.1",
   "description": "Transmission in node with typescript",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "start": "node index.js",
     "reload": "nodemon -e ts --watch src index.js"
@@ -15,6 +16,9 @@
   },
   "devDependencies": {
     "@types/node": "^7.0.18",
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^3.1.6",
+    "merge2": "^1.0.3",
     "ts-node": "^3.0.4",
     "typescript": "^2.3.2"
   }

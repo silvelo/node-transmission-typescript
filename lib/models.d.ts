@@ -1,16 +1,15 @@
-
 export interface ISettings {
-    host: string;
-    port: number;
-    username: string;
-    password: string;
-    ssl: boolean;
-    url: string;
+	host: string;
+	port: number;
+	username: string;
+	password: string;
+	ssl: boolean;
+	url: string;
 }
 
 
 export interface IAddOptions {
-    'download- dir': string;
+	'download- dir': string;
 }
 
 export interface IFileStat {
@@ -240,13 +239,13 @@ export interface ISession {
 	version: string;
 }
 
-export enum STATUS {
-	STOPPED       = 0,
-	CHECK_WAIT    = 1,
-	CHECK         = 2,
-	DOWNLOAD_WAIT = 3,
-	DOWNLOAD      = 4,
-	SEED_WAIT     = 5,
-	SEED          = 6,
-	ISOLATED      = 7,
+export interface IStatus {
+	STOPPED: number;
+	CHECK_WAIT: number;
+	CHECK: number;
+	DOWNLOAD_WAIT: number;
+	DOWNLOAD: number;
+	SEED_WAIT: number;
+	SEED: number;
+	ISOLATED: number;
 }

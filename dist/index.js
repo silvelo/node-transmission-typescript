@@ -1,18 +1,14 @@
-import { IAddOptions, IAddTorrent, IFree, ISession, ISettings, IStats, IStatus, ITorrent, ITorrentRes } from './models';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const TransmissionLib = require('transmission');
-
-export class Transmission {
-    private transmission;
-
-    constructor(settings: ISettings) {
+class Transmission {
+    constructor(settings) {
         this.transmission = new TransmissionLib(settings);
     }
-
-    public status(): IStatus {
+    status() {
         return this.transmission.status;
     }
-
-    public remove(ids: number[], del: boolean = false): Promise<any> {
+    remove(ids, del = false) {
         return new Promise((resolve, reject) => {
             return this.transmission.remove(ids, del, (err, args) => {
                 if (err) {
@@ -22,8 +18,7 @@ export class Transmission {
             });
         });
     }
-
-    public active(): Promise<ITorrentRes> {
+    active() {
         return new Promise((resolve, reject) => {
             return this.transmission.active((err, args) => {
                 if (err) {
@@ -33,8 +28,7 @@ export class Transmission {
             });
         });
     }
-
-    public stop(ids: number[]): Promise<any> {
+    stop(ids) {
         return new Promise((resolve, reject) => {
             return this.transmission.stop(ids, (err, args) => {
                 if (err) {
@@ -44,8 +38,7 @@ export class Transmission {
             });
         });
     }
-
-    public start(ids: number[]): Promise<any> {
+    start(ids) {
         return new Promise((resolve, reject) => {
             return this.transmission.start(ids, (err, args) => {
                 if (err) {
@@ -55,8 +48,7 @@ export class Transmission {
             });
         });
     }
-
-    public startNow(ids: number[]): Promise<any> {
+    startNow(ids) {
         return new Promise((resolve, reject) => {
             return this.transmission.startNow(ids, (err, args) => {
                 if (err) {
@@ -66,7 +58,7 @@ export class Transmission {
             });
         });
     }
-    public verify(ids: number[]) {
+    verify(ids) {
         return new Promise((resolve, reject) => {
             return this.transmission.verify(ids, (err, args) => {
                 if (err) {
@@ -76,7 +68,7 @@ export class Transmission {
             });
         });
     }
-    public reannounce(ids: number[]) {
+    reannounce(ids) {
         return new Promise((resolve, reject) => {
             return this.transmission.reannounce(ids, (err, args) => {
                 if (err) {
@@ -86,8 +78,7 @@ export class Transmission {
             });
         });
     }
-
-    public session(session?: ISession) {
+    session(session) {
         return new Promise((resolve, reject) => {
             if (session) {
                 return this.transmission.session(session, (err, args) => {
@@ -96,7 +87,8 @@ export class Transmission {
                     }
                     resolve(args);
                 });
-            } else {
+            }
+            else {
                 return this.transmission.session((err, args) => {
                     if (err) {
                         return reject(err);
@@ -106,8 +98,7 @@ export class Transmission {
             }
         });
     }
-
-    public sessionStats(): Promise<IStats> {
+    sessionStats() {
         return new Promise((resolve, reject) => {
             return this.transmission.sessionStats((err, args) => {
                 if (err) {
@@ -117,8 +108,7 @@ export class Transmission {
             });
         });
     }
-
-    public freeSpace(path: string): Promise<IFree> {
+    freeSpace(path) {
         return new Promise((resolve, reject) => {
             return this.transmission.freeSpace(path, (err, args) => {
                 if (err) {
@@ -128,18 +118,18 @@ export class Transmission {
             });
         });
     }
-
-    public get(ids?: number[]): Promise<ITorrent[]> {
+    get(ids) {
         return new Promise((resolve, reject) => {
             if (ids) {
-                this.transmission.get(ids, (err, torrents: ITorrentRes) => {
+                this.transmission.get(ids, (err, torrents) => {
                     if (err) {
                         return reject(err);
                     }
                     resolve(torrents.torrents);
                 });
-            } else {
-                this.transmission.get((err, torrents: ITorrentRes) => {
+            }
+            else {
+                this.transmission.get((err, torrents) => {
                     if (err) {
                         return reject(err);
                     }
@@ -148,29 +138,28 @@ export class Transmission {
             }
         });
     }
-
-    public addUrl(url: string, options?: IAddOptions): Promise<IAddTorrent> {
+    addUrl(url, options) {
         return this.addFile(url, options);
     }
-
-    public addFile(path: string, options?: IAddOptions): Promise<IAddTorrent> {
+    addFile(path, options) {
         return new Promise((resolve, reject) => {
             if (options) {
-                this.transmission.addFile(path, options, (err, args: IAddTorrent) => {
-                    if (err) {
-                        return reject(err);
-                    }
-                    resolve(args);
-                });
-            } else {
-                this.transmission.addFile(path, (err, args: IAddTorrent) => {
+                this.transmission.addFile(path, options, (err, args) => {
                     if (err) {
                         return reject(err);
                     }
                     resolve(args);
                 });
             }
-
+            else {
+                this.transmission.addFile(path, (err, args) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    resolve(args);
+                });
+            }
         });
     }
 }
+exports.Transmission = Transmission;
