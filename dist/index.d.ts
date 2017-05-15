@@ -1,4 +1,13 @@
 import { IAddOptions, IAddTorrent, IFree, ISession, ISettings, IStats, IStatus, ITorrent, ITorrentRes } from './models';
+export declare class SettingsConfig {
+    host: string;
+    port: number;
+    username: string;
+    password: string;
+    ssl: boolean;
+    url: string;
+    constructor(settings?: ISettings);
+}
 export declare class Transmission {
     private transmission;
     constructor(settings: ISettings);
