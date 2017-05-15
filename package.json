@@ -1,0 +1,21 @@
+{
+  "name": "node-transmission-typescript",
+  "version": "0.0.1",
+  "description": "Transmission in node with typescript",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "reload": "nodemon -e ts --watch src index.js"
+  },
+  "keywords": [],
+  "author": "arturo.silvelo@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "transmission": "^0.4.9"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.18",
+    "ts-node": "^3.0.4",
+    "typescript": "^2.3.2"
+  }
+}
