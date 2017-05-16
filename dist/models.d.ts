@@ -1,10 +1,10 @@
 export interface ISettings {
-    host: string;
-    port: number;
-    username: string;
-    password: string;
-    ssl: boolean;
-    url: string;
+    host?: string;
+    port?: number;
+    username?: string;
+    password?: string;
+    ssl?: boolean;
+    url?: string;
 }
 export interface IAddOptions {
     'download- dir': string;
