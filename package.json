@@ -9,7 +9,7 @@
     "reload": "nodemon -e ts --watch src index.js",
     "publish": "npm publish"
   },
-  "keywords": [],
+  "keywords": ["Typescript", "transmission", "node"],
   "author": "arturo.silvelo@gmail.com",
   "license": "MIT",
   "dependencies": {
