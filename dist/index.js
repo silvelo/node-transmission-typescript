@@ -150,7 +150,24 @@ class Transmission {
         });
     }
     addUrl(url, options) {
-        return this.addFile(url, options);
+        return new Promise((resolve, reject) => {
+            if (options) {
+                this.transmission.addUrl(url, options, (err, args) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    resolve(args);
+                });
+            }
+            else {
+                this.transmission.addUrl(url, (err, args) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    resolve(args);
+                });
+            }
+        });
     }
     addFile(path, options) {
         return new Promise((resolve, reject) => {

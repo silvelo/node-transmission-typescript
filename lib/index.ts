@@ -169,7 +169,24 @@ export class Transmission {
     }
 
     public addUrl(url: string, options?: IAddOptions): Promise<IAddTorrent> {
-        return this.addFile(url, options);
+        return new Promise((resolve, reject) => {
+            if (options) {
+                this.transmission.addUrl(url, options, (err, args: IAddTorrent) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    resolve(args);
+                });
+            } else {
+                this.transmission.addUrl(url, (err, args: IAddTorrent) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    resolve(args);
+                });
+            }
+
+        });
     }
 
     public addFile(path: string, options?: IAddOptions): Promise<IAddTorrent> {
