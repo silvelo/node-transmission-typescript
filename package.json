@@ -1,12 +1,13 @@
 {
   "name": "node-transmission-typescript",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Transmission in node with typescript",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
     "start": "node index.js",
     "reload": "nodemon -e ts --watch src index.js",
+    "pre-publish": "gulp && npm pack",
     "publish": "npm publish"
   },
   "keywords": ["Typescript", "transmission", "node"],

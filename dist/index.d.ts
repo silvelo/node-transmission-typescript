@@ -9,9 +9,10 @@ export declare class SettingsConfig {
     constructor(settings?: ISettings);
 }
 export declare class Transmission {
+    readonly status: IStatus;
     private transmission;
     constructor(settings: ISettings);
-    status(): IStatus;
+    waitForState(id: number, target: string): Promise<ITorrent>;
     remove(ids: number[], del?: boolean): Promise<any>;
     active(): Promise<ITorrentRes>;
     stop(ids: number[]): Promise<any>;

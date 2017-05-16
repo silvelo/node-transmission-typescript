@@ -21,14 +21,34 @@ export class SettingsConfig {
 }
 
 export class Transmission {
+    get status(): IStatus {
+        return {
+            STOPPED: 'STOPPED',
+            'CHECK_WAIT': 'CHECK_WAIT',
+            CHECK: 'CHECK',
+            DOWNLOAD_WAIT: 'DOWNLOAD_WAIT',
+            DOWNLOAD: 'DOWNLOAD',
+            SEED_WAIT: 'SEED_WAIT',
+            SEED: 'SEED',
+            ISOLATED: 'ISOLATED',
+        };
+    }
+
     private transmission;
 
     constructor(settings: ISettings) {
         this.transmission = new TransmissionLib(settings);
     }
 
-    public status(): IStatus {
-        return this.transmission.status;
+    public waitForState(id: number, target: string): Promise<ITorrent> {
+        return new Promise((resolve, reject) => {
+            return this.transmission.waitForState(id, target, (err, args) => {
+                if (err) {
+                    return reject(err);
+                }
+                resolve(args);
+            });
+        });
     }
 
     public remove(ids: number[], del: boolean = false): Promise<any> {

@@ -223,12 +223,12 @@ export interface ISession {
     version: string;
 }
 export interface IStatus {
-    STOPPED: number;
-    CHECK_WAIT: number;
-    CHECK: number;
-    DOWNLOAD_WAIT: number;
-    DOWNLOAD: number;
-    SEED_WAIT: number;
-    SEED: number;
-    ISOLATED: number;
+    STOPPED: string;
+    CHECK_WAIT: string;
+    CHECK: string;
+    DOWNLOAD_WAIT: string;
+    DOWNLOAD: string;
+    SEED_WAIT: string;
+    SEED: string;
+    ISOLATED: string;
 }

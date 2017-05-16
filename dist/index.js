@@ -13,11 +13,30 @@ class SettingsConfig {
 }
 exports.SettingsConfig = SettingsConfig;
 class Transmission {
+    get status() {
+        return {
+            STOPPED: 'STOPPED',
+            'CHECK_WAIT': 'CHECK_WAIT',
+            CHECK: 'CHECK',
+            DOWNLOAD_WAIT: 'DOWNLOAD_WAIT',
+            DOWNLOAD: 'DOWNLOAD',
+            SEED_WAIT: 'SEED_WAIT',
+            SEED: 'SEED',
+            ISOLATED: 'ISOLATED',
+        };
+    }
     constructor(settings) {
         this.transmission = new TransmissionLib(settings);
     }
-    status() {
-        return this.transmission.status;
+    waitForState(id, target) {
+        return new Promise((resolve, reject) => {
+            return this.transmission.waitForState(id, target, (err, args) => {
+                if (err) {
+                    return reject(err);
+                }
+                resolve(args);
+            });
+        });
     }
     remove(ids, del = false) {
         return new Promise((resolve, reject) => {

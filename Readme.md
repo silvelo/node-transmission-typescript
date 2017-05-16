@@ -44,6 +44,10 @@ All functions returns a promise, so you can use async/await to improve the code 
 
 ## Methods
 
+### property: status : IStatus
+
+### waitForState(id: number, state: string): Promise<ITorrent>
+
 ### remove(ids: number[], del?: boolean): Promise<any>;
 
 ### active(): Promise<ITorrentRes>;
