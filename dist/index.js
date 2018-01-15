@@ -211,7 +211,7 @@ class Transmission {
     addFileBase64(base64, options) {
         return new Promise((resolve, reject) => {
             if (options) {
-                this.transmission.addFileBase64(base64, options, (err, args) => {
+                this.transmission.addBase64(base64, options, (err, args) => {
                     if (err) {
                         return reject(err);
                     }
@@ -219,7 +219,7 @@ class Transmission {
                 });
             }
             else {
-                this.transmission.addFileBase64(base64, (err, args) => {
+                this.transmission.addBase64(base64, (err, args) => {
                     if (err) {
                         return reject(err);
                     }
