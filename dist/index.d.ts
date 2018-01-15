@@ -26,4 +26,5 @@ export declare class Transmission {
     get(ids?: number[]): Promise<ITorrent[]>;
     addUrl(url: string, options?: IAddOptions): Promise<IAddTorrent>;
     addFile(path: string, options?: IAddOptions): Promise<IAddTorrent>;
+    addFileBase64(base64: string, options?: IAddOptions): Promise<IAddTorrent>;
 }

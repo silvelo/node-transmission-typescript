@@ -208,5 +208,25 @@ class Transmission {
             }
         });
     }
+    addFileBase64(base64, options) {
+        return new Promise((resolve, reject) => {
+            if (options) {
+                this.transmission.addFileBase64(base64, options, (err, args) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    resolve(args);
+                });
+            }
+            else {
+                this.transmission.addFileBase64(base64, (err, args) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    resolve(args);
+                });
+            }
+        });
+    }
 }
 exports.Transmission = Transmission;
