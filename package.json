@@ -10,7 +10,11 @@
     "pre-publish": "gulp && npm pack",
     "publish": "npm publish"
   },
-  "keywords": ["Typescript", "transmission", "node"],
+  "keywords": [
+    "Typescript",
+    "transmission",
+    "node"
+  ],
   "author": "arturo.silvelo@gmail.com",
   "license": "MIT",
   "dependencies": {
